@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: mission-control
+    runtime: docker
+    plan: free
+    branch: main
+    region: oregon
+    docker:
+      dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_PATH
+        value: /app/mission-control.db
+      - key: OPENCLAW_GATEWAY_URL
+        value: ws://localhost:18789
+      - key: OPENCLAW_GATEWAY_TOKEN
+        value:
+      - key: MODEL_DISCOVERY
+        value: auto
+      - key: PLANNING_TIMEOUT_MS
+        value: "30000"
+      - key: PLANNING_POLL_INTERVAL_MS
+        value: "2000"
+      - key: WORKSPACE_BASE_PATH
+        value: /app/workspace
+      - key: PROJECTS_PATH
+        value: /app/workspace/projects
+      - key: ALLOW_DYNAMIC_AGENTS
+        value: "true"
+      - key: MC_API_TOKEN
+        value: d6e77d520f02ee5d37a8ba08060aab9eae27f8de2293c94fc09f45e4def1f069
+      - key: WEBHOOK_SECRET
+        value: 2f8a9c4e1b7d3e5f6a0b8c2d4e7f1a9b3c5d8e2f4a6b9c1d3e5f7a9b2c4d6e8
+      - key: PORT
+        value: "4000"
+    disk:
+      name: mission-control-data
+      mountPath: /app
+      sizeGB: 1
