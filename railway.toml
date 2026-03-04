@@ -1,0 +1,21 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "npm run start"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+
+[variables]
+DATABASE_PATH = "/app/mission-control.db"
+OPENCLAW_GATEWAY_URL = "ws://localhost:18789"
+OPENCLAW_GATEWAY_TOKEN = ""
+MODEL_DISCOVERY = "auto"
+PLANNING_TIMEOUT_MS = "30000"
+PLANNING_POLL_INTERVAL_MS = "2000"
+WORKSPACE_BASE_PATH = "/app/workspace"
+PROJECTS_PATH = "/app/workspace/projects"
+ALLOW_DYNAMIC_AGENTS = "true"
+MC_API_TOKEN = "d6e77d520f02ee5d37a8ba08060aab9eae27f8de2293c94fc09f45e4def1f069"
+WEBHOOK_SECRET = "2f8a9c4e1b7d3e5f6a0b8c2d4e7f1a9b3c5d8e2f4a6b9c1d3e5f7a9b2c4d6e8"

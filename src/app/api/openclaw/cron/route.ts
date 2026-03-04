@@ -6,10 +6,10 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const sessions = await openclaw.getSessions();
-    return NextResponse.json({ sessions });
+    const jobs = await openclaw.getCronJobs();
+    return NextResponse.json({ jobs });
   } catch (error) {
-    console.error('Sessions error:', error);
-    return NextResponse.json({ sessions: [] }, { status: 500 });
+    console.error('Cron error:', error);
+    return NextResponse.json({ jobs: [] }, { status: 500 });
   }
 }
