@@ -23,7 +23,7 @@ export async function GET() {
       });
     }
 
-    const res = await fetch(`${openclawUrl}/api/system`, { timeout: 5000 }).catch(() => null);
+    const res = await fetch(`${openclawUrl}/api/system`, { signal: AbortSignal.timeout(5000) }).catch(() => null);
     
     if (!res || !res.ok) {
       return NextResponse.json({

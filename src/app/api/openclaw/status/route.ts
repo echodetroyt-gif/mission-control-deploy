@@ -23,7 +23,7 @@ export async function GET() {
 
     // Try to fetch real status from OpenClaw
     const res = await fetch(`${openclawUrl}/api/status`, { 
-      timeout: 5000 
+      signal: AbortSignal.timeout(5000)
     }).catch(() => null);
     
     if (!res || !res.ok) {
